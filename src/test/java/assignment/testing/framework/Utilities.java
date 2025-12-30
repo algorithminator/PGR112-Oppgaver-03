@@ -147,12 +147,17 @@ public class Utilities
     }
 
     static public Object classCreateInstance(Class<?> classObject, Object... parameterValues) {
-        var signature = Arrays.stream(parameterValues).map(Object::getClass).toArray();
+        var signature = Arrays.stream(parameterValues).map(Object::getClass).toArray(Class<?>[]::new);
+        /*Class<?> [] paramTypesSub = new Class<?>[parameterValues.length];
+        int i = 0;
+        for (Object o : parameterValues) {
+            paramTypesSub[i++] = o.getClass();
+        }*/
 
         try {
-            var constructor = signature.length == 0
+            var constructor = parameterValues.length == 0
                 ? classObject.getConstructor()
-                : classObject.getConstructor((Class<?>[]) signature)
+                : classObject.getConstructor(signature)
             ;
 
             return constructor.newInstance(parameterValues);
