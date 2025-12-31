@@ -28,10 +28,19 @@ public class TestAssignment extends BaseAssignment
     public void task01() {
         // Code that tests the assignment goes here
         testClass("assignment.Book", () -> {
-            assertTrue(fieldExists("title"));
-            assertTrue(fieldExists("author"));
-            assertTrue(fieldExists("numberOfPages"));
+            testClass("assignment.Book", () -> {
+                provideHintIfAssertionFails(
+                       "Finner ikke alle feltene. Har du skrevet og deklarert dem riktig?"
+                        ,
+                        () -> {
+                            assertTrue(fieldExists("title"));
+                            assertTrue(fieldExists("author"));
+                            assertTrue(fieldExists("numberOfPages"));
+                        }
+                );
+
         });
+    });
     }
 
     @DisplayName("Assignment Oppgave #3")
