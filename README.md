@@ -1,131 +1,29 @@
-# Java Assignment Testing Frame
+# Vellkommen til oppgavene i PGR112 Vår 26
 
-The goal of this testing framework is to make it easier to write automated tests for checking course work where Java 25 is used.
+
+## Info
+
+> For å jobbe med oppgavene, skal du plassere alt koden din i  `src/main/java/assignment`-mappen. For å teste koden din, finner du testoppsett
+i mappen `src/test/java/assignment/TestAssignment.java`. Der kan du velge å kjøre alle tester samtidig eller kjøre dem en og en.
+>
+> Husk å commite koden din hyppig og pushe den opp i GitHub når du f.e. sitte fast og ønsker feedback av
+> gruppen din eller student assistene.
+>
+> Når du føler at du ferdig med oppgavene, selv om du ikke klarer å løse alt,
+> push gjerne til GitHub. Det ville gi oss lærere en bedre oversikt over klassens
+> progresjon.
+>
+> Lykke til!
 
 ---
 
-## Technology
+## Teknologi
+
+TODO: instruksjon på junit6
 
 > Java 25
 
 > JUnit 6
 
----
-
-# How to use:
-
 > Meant to be used within IntelliJ IDEA, recommended version: 2025.3
-> 
-> Tests can also be run via `mvn test` (For use with GitHub Actions)
 
-## `src/main/java/assignment/`
-
-Code goes here
-
-### `src/main/java/assignment/README.md`
-
-Assignment text goes here
-
-## `src/test/java/assignment/`
-
-### `src/test/java/assignment/TestAssignment.java`
-
-Code that tests the assignment goes here
-
----
-
-## GitHub Action
-
-> `.github/workflows/test-assignment.yml`
-
-```yml
-name: Maven CI with Java 25
-
-on: [push, pull_request]
-
-jobs:
-  test:
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v5.0.1
-
-      - name: Set up Java 25
-        uses: actions/setup-java@v5.1.0
-        with:
-          distribution: 'oracle'
-          java-version: '25'
-          cache: 'maven'
-
-      - name: Build with Maven and run tests
-        run: mvn test
-```
-
----
-
-## Examples: Testing assignment code
-
-> Examples below are just a subset of what is available, docs are work-in-progress
-
-```java
-testClass("assignment.Person", () -> {
-    assertTrue(fieldExists("name"));
-    assertTrue(methodExists("getName"));
-    assertTrue(methodExists("setName", String.class));
-    assertTrue(methodExists("printName"));
-    
-    var Person = getScopedClass();
-
-    testClass("assignment.Student", () -> {
-        assertTrue(classInheritsFrom(Person));
-    });
-});
-
-testClass("assignment.Student", () -> {
-    var name = "Alice";
-    var student = classCreateInstance(name);
-    
-    classInstanceInvokeMethod(instance, "printName");
-    
-    assertStandardOutputEquals(name);
-});
-
-testClassMethod("assignment.Person", "getName", () -> {
-    assertFalse(methodIsStatic());
-    
-    assertTrue(methodHasModifiers(AccessFlag.PUBLIC));
-    
-    assertTrue(methodReturns(String.class));
-});
-
-testClass("assignment.Student", () -> {
-    testMethod("toString", () -> {
-        provideHintIfAssertionFails(
-            String.format(
-                "Currently Student#toString() is inherited from '%s', declare your own to override it",
-                getScopedMethod().getDeclaringClass().getName()
-            ),
-            () -> {
-                assertFalse(methodIsInherited());
-            }
-        );
-    });
-});
-```
-
-
-### Tips:
-
-- Use `message` parameter in `assert*()`-methods to provide more detailed feedback
-- If you are writing tests locally and from time to time are pulling changes from origin or upstream (in a fork), use `src/main/java/[local|dev]/**` and `src/test/java/[local|dev]/**` as these are included in the gitignore 
-
-
-# Plans
-
-- File I/O
-- Database I/O (JDBC)
-- Snapshot testing
-- Relevant unit testing as part of the framework
-- Testing the testing framework + solve "Quid revera probationes probabunt?"
-- Deeper testing via bytecode analysis
-- Testing of algorithmic complexity via bytecode analysis

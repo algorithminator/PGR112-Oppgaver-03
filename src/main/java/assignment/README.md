@@ -1,9 +1,20 @@
-# Assignment Text
 # Oppgavesett 03
 
 ---
 
-> For å jobbe med denne oppgaven, kan du i denne `_03`-mappen opprette en `src`- eller `code`-mappe som kan brukes for å plassere koden din i
+## Info
+
+> For å jobbe med oppgavene, skal du plassere koden din i denne `assignment`-mappen. For å teste koden din, finner du testoppsett
+i mappen `test/java/assignment/TestAssignment.java`. Der kan du velge å kjøre alle tester samtidig eller kjøre dem en og en.
+> 
+> Husk å commite koden din hyppig og pushe den opp i GitHub når du f.e. sitte fast og ønsker feedback av
+> gruppen din eller student assistene. 
+> 
+> Når du føler at du ferdig med oppgavene, selv om du ikke klarer å løse alt,
+> push gjerne til GitHub. Det ville gi oss lærere en bedre oversikt over klassens 
+> progresjon.
+> 
+> Lykke til!
 
 ---
 
