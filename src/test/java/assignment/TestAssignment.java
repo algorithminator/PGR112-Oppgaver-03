@@ -25,10 +25,10 @@ public class TestAssignment extends BaseAssignment
     @DisplayName("Assignment Oppgave #2")
     @Order(1)
     @Test()
-    public void task01() {
+    public void oppgave02() {
         // Code that tests the assignment goes here
-        testClass("assignment.Book", () -> {
-            testClass("assignment.Book", () -> {
+        testClass("assignment.MyFirstBook", () -> {
+            testClass("assignment.MyFirstBook", () -> {
                 provideHintIfAssertionFails(
                        "Finner ikke alle feltene. Har du skrevet og deklarert dem riktig?"
                         ,
@@ -46,9 +46,9 @@ public class TestAssignment extends BaseAssignment
     @DisplayName("Assignment Oppgave #3")
     @Order(1)
     @Test()
-    public void task02() {
+    public void oppgave03() {
         // Code that tests the assignment goes here
-        testClass("assignment.Book", () -> {
+        testClass("assignment.MyFirstBook", () -> {
 
             var title = "Dune";
             var author = "Frank Herbert";
@@ -64,9 +64,9 @@ public class TestAssignment extends BaseAssignment
     @DisplayName("Assignment Oppgave #4")
     @Order(1)
     @Test()
-    public void task03() {
+    public void oppgave04() {
         // Code that tests the assignment goes here
-        testClass("assignment.Book", () -> {
+        testClass("assignment.MyFirstBook", () -> {
 
             var title = "Dune";
             var author = "Frank Herbert";
@@ -81,17 +81,17 @@ public class TestAssignment extends BaseAssignment
     @DisplayName("Assignment Oppgave #6")
     @Order(1)
     @Test()
-    public void task04() {
+    public void oppgave06() {
         // Code that tests the assignment goes here
         // TODO: hvordan tester at feld er private..
-        testField("assignment","Books","title", () -> {
+        testField("assignment","Book","title", () -> {
 
 
             assertTrue(fieldIsPrivate());
             assertTrue(fieldIsPublic());
         });
 
-        testClass("assignment.Books", () -> {
+        testClass("assignment.Book", () -> {
 
             var title = "Dune";
             var author = "Frank Herbert";
@@ -121,7 +121,7 @@ public class TestAssignment extends BaseAssignment
 
         });
 
-        testClassMethod("assignment","Books", "getTitle", () -> {
+        testClassMethod("assignment","Book", "getTitle", () -> {
             assertFalse(methodIsStatic());
 
             assertTrue(methodHasModifiers(AccessFlag.PUBLIC));
@@ -129,7 +129,7 @@ public class TestAssignment extends BaseAssignment
             assertTrue(methodReturns(String.class));
         });
 
-        testClassMethod("assignment","Books", "getAuthor", () -> {
+        testClassMethod("assignment","Book", "getAuthor", () -> {
             assertFalse(methodIsStatic());
 
             assertTrue(methodHasModifiers(AccessFlag.PUBLIC));
@@ -137,7 +137,7 @@ public class TestAssignment extends BaseAssignment
             assertTrue(methodReturns(String.class));
         });
 
-        testClassMethod("assignment","Books", "getNumberOfPages", () -> {
+        testClassMethod("assignment","Book", "getNumberOfPages", () -> {
             assertFalse(methodIsStatic());
 
             assertTrue(methodHasModifiers(AccessFlag.PUBLIC));
@@ -148,7 +148,7 @@ public class TestAssignment extends BaseAssignment
     @DisplayName("Assignment Oppgave #7")
     @Order(1)
     @Test()
-    public void task05() {
+    public void oppgave07() {
         // Code that tests the assignment goes here
         testClass("assignment.Genre", () -> {
             assertTrue(fieldExists("CRIME"));
@@ -163,7 +163,7 @@ public class TestAssignment extends BaseAssignment
     @DisplayName("Assignment Oppgave #8")
     @Order(1)
     @Test()
-    public void task06() {
+    public void oppgave08() {
         // Code that tests the assignment goes here
         testClass("assignment.Books", () -> {
 
