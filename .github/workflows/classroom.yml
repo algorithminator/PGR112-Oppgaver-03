@@ -19,17 +19,68 @@ jobs:
           distribution: 'oracle'
           java-version: '25'
           cache: 'maven'
-    - name: mvn test
-      id: mvn-test
+    - name: oppgave02
+      id: oppgave02
       uses: classroom-resources/autograding-command-grader@v1
       with:
-        test-name: mvn test
+        test-name: oppgave02
         setup-command: ''
-        command: mvn test
+        command: mvn -Dtest=TestAssignment#oppgave02 test
         timeout: 10
+        max-score: 5
+    - name: oppgave03
+      id: oppgave03
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: oppgave03
+        setup-command: ''
+        command: mvn -Dtest=TestAssignment#oppgave03 test
+        timeout: 10
+        max-score: 5
+    - name: oppgave04
+      id: oppgave04
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: oppgave04
+        setup-command: ''
+        command: mvn -Dtest=TestAssignment#oppgave04 test
+        timeout: 10
+        max-score: 5
+    - name: oppgave06
+      id: oppgave06
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: oppgave06
+        setup-command: ''
+        command: mvn -Dtest=TestAssignment#oppgave06 test
+        timeout: 10
+        max-score: 5
+    - name: oppgave07
+      id: oppgave07
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: oppgave07
+        setup-command: ''
+        command: mvn -Dtest=TestAssignment#oppgave07 test
+        timeout: 10
+        max-score: 5
+    - name: oppgave08
+      id: oppgave08
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: oppgave08
+        setup-command: ''
+        command: mvn -Dtest=TestAssignment#oppgave08 test
+        timeout: 10
+        max-score: 5
     - name: Autograding Reporter
       uses: classroom-resources/autograding-grading-reporter@v1
       env:
-        MVN-TEST_RESULTS: "${{steps.mvn-test.outputs.result}}"
+        OPPGAVE02_RESULTS: "${{steps.oppgave02.outputs.result}}"
+        OPPGAVE03_RESULTS: "${{steps.oppgave03.outputs.result}}"
+        OPPGAVE04_RESULTS: "${{steps.oppgave04.outputs.result}}"
+        OPPGAVE06_RESULTS: "${{steps.oppgave06.outputs.result}}"
+        OPPGAVE07_RESULTS: "${{steps.oppgave07.outputs.result}}"
+        OPPGAVE08_RESULTS: "${{steps.oppgave08.outputs.result}}"
       with:
-        runners: mvn-test
+        runners: oppgave02,oppgave03,oppgave04,oppgave06,oppgave07,oppgave08
